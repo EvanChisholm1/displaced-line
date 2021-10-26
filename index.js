@@ -1,31 +1,38 @@
 console.log("hello world");
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1000, 700);
   noLoop();
 }
 
 let previousPoints;
 
 function drawPoints(points) {
-  let lastPoint = { x: 0, y: height / 2 };
+  stroke(225, 225, 225);
+  noFill();
+  beginShape();
+  curveVertex(0, height / 2);
   points.forEach(point => {
-    // circle(point.x, point.y, 10);
-    line(lastPoint.x, lastPoint.y, point.x, point.y);
-    lastPoint = { x: point.x, y: point.y };
+    curveVertex(point.x, point.y);
   });
+  const lastPoint = points[points.length - 1];
+  curveVertex(lastPoint.x, lastPoint.y);
+  endShape();
 }
 
 function draw() {
+  background(0);
+
   let points = [];
   const numberOfPoints = 10;
   const spaceBetween = width / numberOfPoints;
+  points.push({ x: 0, y: height / 2 });
   for (let i = 0; i < 10; i++) {
     points.push({ y: height / 2, x: i * spaceBetween + spaceBetween });
   }
 
-  drawPoints(points);
+  // drawPoints(points);
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 75; i++) {
     points = points.map(point => {
       const shouldAdd = Math.random() > 0.5;
       const displaceMentAmount = Math.random() * 20;
