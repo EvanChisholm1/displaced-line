@@ -7,7 +7,9 @@ function setup() {
 let previousPoints;
 
 function drawPoints(points) {
-  stroke(225, 225, 225);
+  // stroke(225, 225, 225);
+  colorMode(HSL);
+  stroke(random(150, 260), random(40, 100), 53, 1);
   noFill();
   beginShape();
   curveVertex(0, height / 2);
@@ -20,7 +22,11 @@ function drawPoints(points) {
 }
 
 function draw() {
-  background(0);
+  // colorMode(HSL);
+  // background(0, 100, 100, 100);
+  background("#eae0c8");
+  // background("#fffaf0");
+  background("#fdf5e6");
 
   let points = [];
   const numberOfPoints = 10;
